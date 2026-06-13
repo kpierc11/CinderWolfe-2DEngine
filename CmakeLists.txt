@@ -1,0 +1,20 @@
+cmake_minimum_required(VERSION 4.0.0)
+
+project(CinderWolfeEngine CXX)
+
+set(CMAKE_CXX_SCAN_FOR_MODULES 1)
+set(CMAKE_CXX_STANDARD 23)
+set(CMAKE_CXX_STANDARD_REQUIRED ON)
+
+add_executable(MainProgram)
+
+target_sources(MainProgram
+    PRIVATE "${CMAKE_CURRENT_SOURCE_DIR}/core/main.cpp"
+)
+
+target_sources(MainProgram 
+ PRIVATE
+ FILE_SET cxx_modules 
+ TYPE CXX_MODULES 
+ FILES
+ "${CMAKE_CURRENT_SOURCE_DIR}/modules/CinderWolfeEngine.Math.cppm")
