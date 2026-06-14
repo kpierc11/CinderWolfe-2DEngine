@@ -1,7 +1,14 @@
 import std;
+import CinderWolfeEngine.Engine;
 import CinderWolfeEngine.Math;
 
-using namespace CinderWolfeEngine::Math;
-int main (){
-    std::println("hello world {}", subtractNums(1,2));
+using namespace CinderWolfeEngine::Engine;
+
+int main()
+{
+
+    Engine engine;
+
+    engine.InitEngine();
+
 }
