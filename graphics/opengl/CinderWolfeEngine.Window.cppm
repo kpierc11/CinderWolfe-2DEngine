@@ -1,39 +1,53 @@
 module;
 #include <GLFW/glfw3.h>
 export module CinderWolfeEngine.Window;
+import std;
 
-export int InitWindow()
+namespace CinderWolfeEngine
 {
-    GLFWwindow *window;
 
-    /* Initialize the library */
-    if (!glfwInit())
-        return -1;
+    export class Window
+    {
+    public:
+        Window();
+        ~Window();
+        bool CreateWindow(int width, int height, const char *name);
+        GLFWwindow *GetWindow() const { return window; };
+        void CloseWindow();
 
-    /* Create a windowed mode window and its OpenGL context */
-    window = glfwCreateWindow(640, 480, "Hello World", NULL, NULL);
-    if (!window)
+    private:
+        GLFWwindow *window;
+    };
+
+    Window::Window() : window(nullptr)
+    {
+    }
+
+    Window::~Window()
+    {
+    }
+
+    bool Window::CreateWindow(int width, int height, const char *name)
+    {
+        /* Initialize the library */
+        if (!glfwInit())
+            return false;
+
+        /* Create a windowed mode window and its OpenGL context */
+        window = glfwCreateWindow(width, height, name, NULL, NULL);
+        if (!window)
+        {
+            glfwTerminate();
+            return false;
+        }
+
+        /* Make the window's context current */
+        glfwMakeContextCurrent(window);
+
+        return true;
+    }
+    void Window::CloseWindow()
     {
         glfwTerminate();
-        return -1;
     }
-
-    /* Make the window's context current */
-    glfwMakeContextCurrent(window);
-
-    /* Loop until the user closes the window */
-    while (!glfwWindowShouldClose(window))
-    {
-        /* Render here */
-        glClear(GL_COLOR_BUFFER_BIT);
-
-        /* Swap front and back buffers */
-        glfwSwapBuffers(window);
-
-        /* Poll for and process events */
-        glfwPollEvents();
-    }
-
-    glfwTerminate();
-    return 0;
 }

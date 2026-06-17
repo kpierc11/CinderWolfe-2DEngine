@@ -1,6 +1,6 @@
 export module CinderWolfeEngine.Math;
 
-namespace CinderWolfeEngine::Math
+namespace CinderWolfeEngine
 {
 
     export class Vector {

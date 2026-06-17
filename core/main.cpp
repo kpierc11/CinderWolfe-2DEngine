@@ -2,13 +2,22 @@ import std;
 import CinderWolfeEngine.Engine;
 import CinderWolfeEngine.Math;
 
-using namespace CinderWolfeEngine::Engine;
+using namespace CinderWolfeEngine;
 
 int main()
 {
 
     Engine engine;
 
-    engine.InitEngine();
+    const bool engineStarted = engine.InitEngine();
 
+    if (!engineStarted)
+    {
+        std::println("Could Initialize Engine.");
+        return -1;
+    }
+
+    engine.CoreLoop();
+
+    return 0;
 }
