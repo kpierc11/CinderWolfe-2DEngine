@@ -33,7 +33,7 @@ target_sources(${PROJECT_NAME}
  FILES
  "${CMAKE_CURRENT_SOURCE_DIR}/math/CinderWolfeEngine.Math.cppm"
  "${CMAKE_CURRENT_SOURCE_DIR}/core/CinderWolfeEngine.Engine.cppm"
- "${CMAKE_CURRENT_SOURCE_DIR}/graphics/opengl/CinderWolfeEngine.Window.cppm")
+ "${CMAKE_CURRENT_SOURCE_DIR}/graphics/CinderWolfeEngine.Window.cppm")
 
  target_include_directories(${PROJECT_NAME}
     PRIVATE
