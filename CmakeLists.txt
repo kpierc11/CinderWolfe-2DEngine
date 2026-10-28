@@ -2,7 +2,7 @@ cmake_minimum_required(VERSION 4.0.0)
 
 project(CinderWolfeEngine CXX)
 
-set(CMAKE_CXX_SCAN_FOR_MODULES 1)
+set(CMAKE_CXX_SCAN_FOR_MODULES 0)
 set(CMAKE_CXX_STANDARD 23)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
 
@@ -31,23 +31,21 @@ target_sources(${PROJECT_NAME}
  FILE_SET cxx_modules 
  TYPE CXX_MODULES 
  FILES
- "${CMAKE_CURRENT_SOURCE_DIR}/math/CinderWolfeEngine.Math.cppm"
- "${CMAKE_CURRENT_SOURCE_DIR}/core/CinderWolfeEngine.Engine.cppm"
- "${CMAKE_CURRENT_SOURCE_DIR}/graphics/CinderWolfeEngine.Window.cppm")
+ "${CMAKE_CURRENT_SOURCE_DIR}/math/Math.cppm"
+ "${CMAKE_CURRENT_SOURCE_DIR}/core/Engine.cppm"
+ "${CMAKE_CURRENT_SOURCE_DIR}/graphics/Window.cppm")
+
 
  target_include_directories(${PROJECT_NAME}
     PRIVATE
-        ${CMAKE_CURRENT_SOURCE_DIR}/graphics/opengl
+        "${CMAKE_CURRENT_SOURCE_DIR}/graphics/opengl/"       
 )
 
 # -----------------------------
 # Libraries
 # -----------------------------
-target_link_libraries(${PROJECT_NAME}
-    PRIVATE
-        glfw
-)
+target_link_libraries(${PROJECT_NAME} PRIVATE glfw )
 
  # Find open gl package on all platforms
- find_package(OpenGL REQUIRED)
- target_link_libraries(${PROJECT_NAME} PRIVATE OpenGL::GL)
+find_package(OpenGL REQUIRED)
+target_link_libraries(${PROJECT_NAME} PRIVATE OpenGL::GL)
